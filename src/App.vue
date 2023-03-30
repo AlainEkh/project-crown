@@ -1,20 +1,51 @@
 <template>
   <div id="app">
-    <v-row>
-      <v-col>
-        <nav>
-          <img alt="Les Aliments Crown" width="175" height="200" src="./assets/Logo_LAC.png">
-          <router-link to="/">Home</router-link> |
-          <router-link to="/about">About</router-link> |
-          <router-link to="/contact">Contact</router-link> |
-          <router-link to="/service">Services</router-link>
-        </nav>
-        <router-view/>
+    <v-row no-gutters>
+      <v-col cols="3">
+        <router-link to="/">
+          <img
+            height="250"
+            width="250"
+            alt="Les Aliments Crown"
+            src="./assets/Logo_LAC.png"
+          />
+        </router-link>
       </v-col>
+
+      <v-col :cols="$vuetify.breakpoint.mobile ? 1 : 4"></v-col>
+
+      <v-col :cols="$vuetify.breakpoint.mobile ? 2 : 1">
+        <v-btn text block to="/"> Home </v-btn>
+      </v-col>
+
+      <v-col :cols="$vuetify.breakpoint.mobile ? 2 : 1">
+        <v-btn text block to="/contact"> Contact </v-btn>
+      </v-col>
+
+      <v-col :cols="$vuetify.breakpoint.mobile ? 2 : 1">
+        <v-btn text block to="/services"> Services </v-btn>
+      </v-col>
+
+      <v-col :cols="$vuetify.breakpoint.mobile ? 2 : 1">
+        <v-btn text block to="/about"> About </v-btn>
+      </v-col>
+      <v-col>
+      </v-col>
+      <v-col :cols="$vuetify.breakpoint.mobile ? 2 : 1"></v-col>
     </v-row>
+
+    <router-view />
 
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+    }
+  },
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -36,5 +67,13 @@ nav {
       color: #42b983;
     }
   }
+}
+
+.theme--light.v-btn--active:hover::before,
+.theme--light.v-btn--active::before {
+  opacity: 0;
+}
+.v-btn {
+  height: 100px !important;
 }
 </style>
